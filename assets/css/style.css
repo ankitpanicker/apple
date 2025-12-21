@@ -284,16 +284,21 @@ body {
 .swiper-slide {
     background-position: center;
     background-size: cover;
-    width: 300px; /* Increased width slightly so they don't look cramped */
-    height: 400px;
-    transition: transform 0.5s ease;
-    /* REMOVED: opacity: 0.6; -> This was making them transparent */
+    width: 260px; /* Reduced width to fit 7 cards on screen */
+    height: 380px;
+    transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
-/* Only scale the active card, but keep others solid */
+/* Make side cards slightly transparent to focus on the center */
+.swiper-slide:not(.swiper-slide-active) {
+    opacity: 0.7; 
+}
+
+/* The Center Card */
 .swiper-slide-active {
-    z-index: 10;
-    transform: scale(1.1); /* Active card pops out */
+    z-index: 20; /* Keep center card on TOP */
+    opacity: 1;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* Add glow to active card */
 }
 
 .doc-card {
