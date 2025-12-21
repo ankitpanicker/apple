@@ -10,46 +10,57 @@ function closeMenu() {
     navLinks.classList.remove('active');
 }
 
-// 2. Swiper Logic (Doctors - Flat Scale Look matching Screenshot)
+// 2. Swiper Logic (Doctors - 7 Cards Visible)
 var swiper = new Swiper(".doctors-slider", {
     effect: "coverflow",
     grabCursor: true,
     centeredSlides: true,
-    slidesPerView: "auto",
+    slidesPerView: "auto", 
     loop: true,            
-    loopedSlides: 14,      // High number for smooth infinite scrolling
+    loopedSlides: 14,      // High number needed for smooth 7-card looping
     speed: 800,           
     
-    // VISUAL SETTINGS (Flat look, gaps, sizing via CSS)
+    // 3D Effect to show 1 Center + 3 Left + 3 Right
     coverflowEffect: {
-        rotate: 0,        // No rotation (matches screenshot)
-        stretch: 20,      // Positive value = Space between cards
-        depth: 0,         // No depth perspective (keeps them flat)
-        modifier: 1,      
-        slideShadows: false, // Cleaner look without shadows
+        rotate: 0,         // Keep flat
+        stretch: 0,        // Spacing: 0 keeps them tight enough to see 7
+        depth: 150,        // Depth: High depth shrinks side cards visually
+        modifier: 2,       // Intensity of the shrink
+        slideShadows: true,
     },
     
     autoplay: {
         delay: 2500,
         disableOnInteraction: false,
     },
-    
     pagination: {
         el: ".swiper-pagination",
         clickable: true,
     },
     
     breakpoints: {
-        // Mobile: Tighter spacing
+        // Mobile: Show 3 (1 Center + 1 Side)
         320: {
             coverflowEffect: {
+                depth: 200,
+                modifier: 1,
                 stretch: 10
             }
         },
-        // Desktop: Distinct spacing for 7 cards
-        1024: {
+        // Tablet: Show 5
+        768: {
             coverflowEffect: {
-                stretch: 30 // Space them out nicely
+                depth: 150,
+                modifier: 1.5,
+                stretch: 0
+            }
+        },
+        // Desktop: Show 7 (Center + 3 Sides)
+        1200: {
+            coverflowEffect: {
+                depth: 120, // Perfect depth to fit 7
+                modifier: 2,
+                stretch: -10 // Slight overlap to fit them all
             }
         }
     }
