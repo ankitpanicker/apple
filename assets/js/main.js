@@ -10,22 +10,22 @@ function closeMenu() {
     navLinks.classList.remove('active');
 }
 
-// 2. Swiper Logic (Doctors - 7 Cards Visible)
+// 2. Swiper Logic (Doctors - Fixed "Stuck" Issue)
 var swiper = new Swiper(".doctors-slider", {
     effect: "coverflow",
     grabCursor: true,
     centeredSlides: true,
-    slidesPerView: "auto", 
+    slidesPerView: "auto",
     loop: true,            
-    loopedSlides: 14,      // High number needed for smooth 7-card looping
-    speed: 800,           
+    loopedSlides: 10,      // Sufficient for smooth looping
+    speed: 1000,           
     
-    // 3D Effect to show 1 Center + 3 Left + 3 Right
+    // Adjusted 3D settings to prevent "stuck" look
     coverflowEffect: {
-        rotate: 0,         // Keep flat
-        stretch: 0,        // Spacing: 0 keeps them tight enough to see 7
-        depth: 150,        // Depth: High depth shrinks side cards visually
-        modifier: 2,       // Intensity of the shrink
+        rotate: 0,         
+        stretch: 0,        // 0 prevents them from overlapping too much
+        depth: 100,        // Moderate depth so side cards are clearly visible
+        modifier: 2,       
         slideShadows: true,
     },
     
@@ -39,28 +39,20 @@ var swiper = new Swiper(".doctors-slider", {
     },
     
     breakpoints: {
-        // Mobile: Show 3 (1 Center + 1 Side)
+        // Mobile: Show 1 big, others peeking
         320: {
             coverflowEffect: {
-                depth: 200,
+                depth: 100,
                 modifier: 1,
-                stretch: 10
+                stretch: 15 // Adds space between cards on mobile
             }
         },
-        // Tablet: Show 5
-        768: {
+        // Desktop: Show center + 3 sides clear
+        1024: {
             coverflowEffect: {
-                depth: 150,
-                modifier: 1.5,
-                stretch: 0
-            }
-        },
-        // Desktop: Show 7 (Center + 3 Sides)
-        1200: {
-            coverflowEffect: {
-                depth: 120, // Perfect depth to fit 7
+                depth: 100,
                 modifier: 2,
-                stretch: -10 // Slight overlap to fit them all
+                stretch: 0 // Normal spacing for desktop
             }
         }
     }
