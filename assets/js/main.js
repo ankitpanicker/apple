@@ -10,27 +10,27 @@ function closeMenu() {
     navLinks.classList.remove('active');
 }
 
-// 2. Swiper Logic (Doctors - 7 Cards Visible)
+// 2. Swiper Logic (Doctors - 3D Infinite Flow for 7 Cards)
 var swiper = new Swiper(".doctors-slider", {
     effect: "coverflow",
     grabCursor: true,
     centeredSlides: true,
-    slidesPerView: "auto", 
-    loop: true,            
-    loopedSlides: 14,      // High number needed for smooth 7-card looping
-    speed: 800,           
+    slidesPerView: "auto", // Allows cards to stack naturally
+    loop: true,            // Infinite looping
+    loopedSlides: 12,      // High number ensures no gaps during loop
+    speed: 1000,           // Smooth transition speed
     
-    // 3D Effect to show 1 Center + 3 Left + 3 Right
+    // The 3D Effect Settings to stack 3 on each side
     coverflowEffect: {
-        rotate: 0,         // Keep flat
-        stretch: 0,        // Spacing: 0 keeps them tight enough to see 7
-        depth: 150,        // Depth: High depth shrinks side cards visually
-        modifier: 2,       // Intensity of the shrink
-        slideShadows: true,
+        rotate: 0,         // Keep cards flat
+        stretch: 0,        // No spacing stretch
+        depth: 100,        // Depth pushes side cards back
+        modifier: 2.5,     // Multiplier for the effect
+        slideShadows: true,// Adds shadow for depth perception
     },
     
     autoplay: {
-        delay: 2500,
+        delay: 3000,
         disableOnInteraction: false,
     },
     pagination: {
@@ -38,29 +38,20 @@ var swiper = new Swiper(".doctors-slider", {
         clickable: true,
     },
     
+    // Responsive adjustments
     breakpoints: {
-        // Mobile: Show 3 (1 Center + 1 Side)
         320: {
             coverflowEffect: {
-                depth: 200,
+                depth: 300, // Deeper on mobile
                 modifier: 1,
                 stretch: 10
             }
         },
-        // Tablet: Show 5
-        768: {
+        1024: {
             coverflowEffect: {
-                depth: 150,
-                modifier: 1.5,
+                depth: 100,
+                modifier: 2.5,
                 stretch: 0
-            }
-        },
-        // Desktop: Show 7 (Center + 3 Sides)
-        1200: {
-            coverflowEffect: {
-                depth: 120, // Perfect depth to fit 7
-                modifier: 2,
-                stretch: -10 // Slight overlap to fit them all
             }
         }
     }
@@ -90,11 +81,11 @@ var insuranceSwiper = new Swiper(".insurance-slider", {
     slidesPerView: 2,
     spaceBetween: 20,
     loop: true,
-    speed: 4000, 
+    speed: 4000, // Speed of the ticker (higher = slower/smoother)
     autoplay: {
-        delay: 0, 
+        delay: 0, // 0 delay makes it continuous
         disableOnInteraction: false,
-        pauseOnMouseEnter: false 
+        pauseOnMouseEnter: false // Never pause
     },
     breakpoints: {
         640: { slidesPerView: 3 },
@@ -197,7 +188,7 @@ setInterval(() => {
     showTestimonial(currentTestimonial);
 }, 5000);
 
-// 10. Modals
+// 10. Modals (Enquiry & Reviews)
 const enquiryModal = document.getElementById('enquiryModal');
 const reviewsModal = document.getElementById('reviewsModal');
 const openEnquiryBtn = document.getElementById('openModalBtn');
@@ -220,11 +211,14 @@ openReviewsBtn.addEventListener('click', () => {
         {text:"Billing process was transparent.", rating:4},
         {text:"Pharmacy is well stocked.", rating:5}
     ];
+    
+    // Helper for stars
     function getStars(rating) {
         let s = '';
         for(let i=0; i<5; i++) s += (i<rating) ? '<i class="fas fa-star"></i>' : '<i class="far fa-star"></i>';
         return s;
     }
+
     extraReviews.forEach(r => {
         const div = document.createElement('div');
         div.className = 'review-item';
@@ -302,9 +296,13 @@ function showOptions(options, type) {
 }
 
 function handleOption(val, text, type) {
+    // Remove old options
     const opts = document.querySelector('.options-container:last-child');
     if(opts) opts.remove();
+
+    // Show user reply
     userReply(text);
+
     setTimeout(() => {
         if(type === "lang") {
             setLang(val);
@@ -316,10 +314,12 @@ function handleOption(val, text, type) {
 
 function setLang(l) {
     lang = l;
-    if(l === "") { chatBody.innerHTML = ""; initChat(); return; }
+    if(l === "") { chatBody.innerHTML = ""; initChat(); return; } // Restart logic
+    
     bot(lang === "hi" 
         ? "🙏 Apple Hospital में आपका स्वागत है। मैं आपकी क्या मदद कर सकता हूँ?" 
         : "👋 Welcome to Apple Hospital. How can I help you today?");
+    
     showMainMenu();
 }
 
@@ -385,6 +385,8 @@ function showCTA() {
     </div>`;
     chatBody.innerHTML += html;
     chatBody.scrollTop = chatBody.scrollHeight;
+    
+    // Show menu again after a delay
     setTimeout(() => {
         bot(lang==="hi" ? "क्या कुछ और मदद चाहिए?" : "Do you need anything else?");
         showMainMenu();
