@@ -10,49 +10,53 @@ function closeMenu() {
     navLinks.classList.remove('active');
 }
 
-// 2. Swiper Logic (Doctors - Fixed "Stuck" Issue)
+// 2. Swiper Logic (Doctors - 7 Cards Visible + Auto Swipe)
 var swiper = new Swiper(".doctors-slider", {
     effect: "coverflow",
     grabCursor: true,
     centeredSlides: true,
     slidesPerView: "auto",
-    loop: true,            
-    loopedSlides: 10,      // Sufficient for smooth looping
-    speed: 1000,           
+    loop: true,
     
-    // Adjusted 3D settings to prevent "stuck" look
-    coverflowEffect: {
-        rotate: 0,         
-        stretch: 0,        // 0 prevents them from overlapping too much
-        depth: 100,        // Moderate depth so side cards are clearly visible
-        modifier: 2,       
-        slideShadows: true,
-    },
+    // Create enough duplicates to ensure sides are never empty
+    loopedSlides: 20, 
+    
+    speed: 1000, // Smooth transition speed
     
     autoplay: {
-        delay: 2500,
-        disableOnInteraction: false,
+        delay: 2000, // Auto-swipe every 2 seconds
+        disableOnInteraction: false, // Continue swiping even after user touches it
+        pauseOnMouseEnter: false,    // Keep moving even when mouse is over
     },
+    
+    coverflowEffect: {
+        rotate: 0,        // Keep cards flat
+        stretch: 0,       // 0 overlap (adjust to -10 if you want them tighter)
+        depth: 150,       // Deep perspective to shrink side cards
+        modifier: 1.5,    // Effect intensity
+        slideShadows: false, // Turn off shadows for cleaner look (optional: change to true)
+    },
+    
     pagination: {
         el: ".swiper-pagination",
         clickable: true,
     },
     
     breakpoints: {
-        // Mobile: Show 1 big, others peeking
+        // Mobile: Show 3 (1 Center + 1 on each side)
         320: {
             coverflowEffect: {
-                depth: 100,
+                depth: 200,
                 modifier: 1,
-                stretch: 15 // Adds space between cards on mobile
+                stretch: 15
             }
         },
-        // Desktop: Show center + 3 sides clear
+        // Desktop: Show 7 (1 Center + 3 on each side)
         1024: {
             coverflowEffect: {
-                depth: 100,
-                modifier: 2,
-                stretch: 0 // Normal spacing for desktop
+                depth: 120,   // Adjusted depth for desktop
+                modifier: 2,  // Stronger effect
+                stretch: 0    
             }
         }
     }
