@@ -1,126 +1,583 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apple Hospital - Burhanpur</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
-  <link rel="stylesheet" href="assets/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple Hospital - Burhanpur</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-<nav class="navbar">
-  <div style="display:flex; align-items:center;">
-    <div class="hamburger" id="hamburgerBtn">
-      <i class="fas fa-bars"></i>
-    </div>
-    <div class="logo">
-      <img src="assets/images/logo.png" alt="Apple Hospital Logo">
-    </div>
-  </div>
-
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#home" onclick="closeMenu()">Home</a></li>
-    <li><a href="#services" onclick="closeMenu()">Specialties</a></li>
-    <li><a href="#doctors" onclick="closeMenu()">Doctors</a></li>
-    <li><a href="#packages" onclick="closeMenu()">Checkups</a></li>
-    <li><a href="#gallery" onclick="closeMenu()">Gallery</a></li>
-    <li><a href="#faq" onclick="closeMenu()">FAQ</a></li>
-  </ul>
-
-  <div class="nav-cta">
-    <a href="https://wa.me/919009099380" target="_blank" class="btn btn-whatsapp">
-      <i class="fab fa-whatsapp"></i> Chat
-    </a>
-    <div class="emergency-contact">
-      <a href="tel:+919009099380">
-        <i class="fas fa-phone-volume"></i>
-        <div>
-          <span>Emergency</span>
-          <strong>+91 90090 99380</strong>
+    <nav class="navbar">
+        <div style="display:flex; align-items:center;">
+            <div class="hamburger" id="hamburgerBtn">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <div class="logo">
+                <img src="assets/images/logo.png" alt="Apple Hospital Logo">
+            </div>
         </div>
-      </a>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home" onclick="closeMenu()">Home</a></li>
+            <li><a href="#services" onclick="closeMenu()">Specialties</a></li>
+            <li><a href="#doctors" onclick="closeMenu()">Doctors</a></li>
+            <li><a href="#packages" onclick="closeMenu()">Checkups</a></li>
+            <li><a href="#gallery" onclick="closeMenu()">Gallery</a></li>
+            <li><a href="#faq" onclick="closeMenu()">FAQ</a></li>
+        </ul>
+
+        <div class="nav-cta">
+            <a href="https://wa.me/919009099380" target="_blank" class="btn btn-whatsapp" style="text-decoration:none; padding: 8px 15px; font-size: 0.85rem;">
+                <i class="fab fa-whatsapp"></i> Chat
+            </a>
+            <div class="emergency-contact">
+                <a href="tel:+919009099380" style="text-decoration:none; color:inherit; display:flex; align-items:center; gap:8px;">
+                    <i class="fas fa-phone-volume"></i>
+                    <div>
+                        <span style="display:block; font-size:0.75rem; color:var(--text-light); line-height:1;">Emergency</span>
+                        <span style="color: var(--text-dark);">+91 90090 99380</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <video class="hero-bg-video" autoplay loop muted playsinline>
+            <source src="https://cdn.pixabay.com/video/2020/06/22/42762-432570087_large.mp4" type="video/mp4">
+        </video>
+
+        <div class="hero-container">
+            <div class="hero-text reveal">
+                <span class="section-label" style="background: var(--white); border: 1px solid #eee;">Best Care in Burhanpur</span>
+                <h1>Apple Hospital & Research Center</h1>
+                <p>Providing advanced multispeciality healthcare to Burhanpur. Combining modern technology with compassionate healing under expert specialists.</p>
+                <div class="hero-btns">
+                    <a href="#doctors" class="btn btn-primary">Find a Doctor</a>
+                    <a href="#services" class="btn btn-outline" style="background: rgba(255,255,255,0.8);">Our Services</a>
+                </div>
+            </div>
+            <div class="hero-img reveal">
+                <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Apple Hospital Burhanpur">
+            </div>
+        </div>
+    </section>
+
+    <div class="container reveal">
+        <section class="stats-bar">
+            <div class="stat-item"><span class="stat-number" data-target="8">0+</span><span class="stat-label">Years Exp.</span></div>
+            <div class="stat-item"><span class="stat-number" data-target="50">0+</span><span class="stat-label">Doctors</span></div>
+            <div class="stat-item"><span class="stat-number" data-target="15000">0+</span><span class="stat-label">Patients</span></div>
+            <div class="stat-item"><span class="stat-number" data-target="24">0+</span><span class="stat-label">Hr Emergency</span></div>
+        </section>
     </div>
-  </div>
-</nav>
 
-<section class="hero" id="home">
-  <video class="hero-bg-video" autoplay loop muted playsinline>
-    <source src="https://cdn.pixabay.com/video/2020/06/22/42762-432570087_large.mp4" type="video/mp4">
-  </video>
+    <section class="features" id="services">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Centers of Excellence</span>
+                <h2>Our Specialties</h2>
+                <p>Comprehensive care delivered by the region's top specialists.</p>
+            </div>
+            <div class="features-grid reveal">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-female"></i></div>
+                    <h3>Gynecology</h3>
+                    <p>Expert care for women's health, maternity, and complex procedures.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-magic"></i></div>
+                    <h3>Plastic Surgery</h3>
+                    <p>Advanced cosmetic and reconstructive surgery solutions.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-x-ray"></i></div>
+                    <h3>Radiology</h3>
+                    <p>High-precision imaging and diagnostics including CT and MRI.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-user-md"></i></div>
+                    <h3>General Medicine</h3>
+                    <p>Comprehensive care for acute and chronic illnesses.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <div class="hero-container">
-    <div class="hero-text reveal">
-      <span class="section-label">Best Care in Burhanpur</span>
-      <h1>Apple Hospital & Research Center</h1>
-      <p>Providing advanced multispeciality healthcare to Burhanpur.</p>
-      <div class="hero-btns">
-        <a href="#doctors" class="btn btn-primary">Find a Doctor</a>
-        <a href="#services" class="btn btn-outline">Our Services</a>
-      </div>
+    <section class="doctors" id="doctors">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Our Team</span>
+                <h2>Meet Our Specialists</h2>
+                <p>Scroll to explore our expert team.</p>
+            </div>
+            
+            <div class="swiper doctors-slider">
+                <div class="swiper-wrapper">
+                    
+                    <div class="swiper-slide">
+                        <div class="doc-card">
+                            <img src="assets/images/DR.P.png" alt="Dr Surekha Pooniwala">
+                            <div class="doc-overlay">
+                                <div class="doc-name">Dr. Surekha Pooniwala</div>
+                                <div class="doc-role">MD - Gynecologist</div>
+                                <div class="doc-socials">
+                                    <a href="tel:+919009099380"><i class="fas fa-phone-alt"></i></a>
+                                    <a href="https://wa.me/919009099380?text=I%20want%20to%20book%20an%20appointment%20with%20Dr.%20Surekha%20Pooniwala" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="doc-card">
+                            <img src="assets/images/DR.H.png" alt="Dr Hemant Mahajan">
+                            <div class="doc-overlay">
+                                <div class="doc-name">Dr. Hemant Mahajan</div>
+                                <div class="doc-role">MD - General Medicine</div>
+                                <div class="doc-socials">
+                                    <a href="tel:+919009099380"><i class="fas fa-phone-alt"></i></a>
+                                    <a href="https://wa.me/919009099380?text=I%20want%20to%20book%20an%20appointment%20with%20Dr.%20Hemant%20Mahajan" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="doc-card">
+                            <img src="assets/images/DR.SJ.png" alt="Dr Swati Jain">
+                            <div class="doc-overlay">
+                                <div class="doc-name">Dr. Swati Jain</div>
+                                <div class="doc-role">MS - Plastic Surgeon</div>
+                                <div class="doc-socials">
+                                    <a href="tel:+919009099380"><i class="fas fa-phone-alt"></i></a>
+                                    <a href="https://wa.me/919009099380?text=I%20want%20to%20book%20an%20appointment%20with%20Dr.%20Swati%20Jain" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="doc-card">
+                            <img src="assets/images/DR.S.png" alt="Dr Shashikant Medshikar">
+                            <div class="doc-overlay">
+                                <div class="doc-name">Dr. Shashikant Medshikar</div>
+                                <div class="doc-role">Radiologist</div>
+                                <div class="doc-socials">
+                                    <a href="tel:+919009099380"><i class="fas fa-phone-alt"></i></a>
+                                    <a href="https://wa.me/919009099380?text=I%20want%20to%20book%20an%20appointment%20with%20Dr.%20Shashikant%20Medshikar" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="doc-card">
+                            <img src="assets/images/DR.V.png" alt="Dr Vivek Awasthi">
+                            <div class="doc-overlay">
+                                <div class="doc-name">Dr. Vivek Awasthi</div>
+                                <div class="doc-role">Anesthetist</div>
+                                <div class="doc-socials">
+                                    <a href="tel:+919009099380"><i class="fas fa-phone-alt"></i></a>
+                                    <a href="https://wa.me/919009099380?text=I%20want%20to%20book%20an%20appointment%20with%20Dr.%20Vivek%20Awasthi" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="doc-card">
+                            <img src="assets/images/DR.R.png" alt="Dr Raunak Jain">
+                            <div class="doc-overlay">
+                                <div class="doc-name">Dr. Raunak Jain</div>
+                                <div class="doc-role">Anesthetist</div>
+                                <div class="doc-socials">
+                                    <a href="tel:+919009099380"><i class="fas fa-phone-alt"></i></a>
+                                    <a href="https://wa.me/919009099380?text=I%20want%20to%20book%20an%20appointment%20with%20Dr.%20Raunak%20Jain" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="doc-card">
+                            <img src="assets/images/DR.C.png" alt="Dr Chandan Bhole">
+                            <div class="doc-overlay">
+                                <div class="doc-name">Dr. Chandan Bhole</div>
+                                <div class="doc-role">Senior Consultant</div>
+                                <div class="doc-socials">
+                                    <a href="tel:+919009099380"><i class="fas fa-phone-alt"></i></a>
+                                    <a href="https://wa.me/919009099380?text=I%20want%20to%20book%20an%20appointment%20with%20Dr.%20Chandan%20Bhole" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="steps-section">
+        <div class="container">
+            <div class="section-header reveal">
+                 <span class="section-label">Patient Journey</span>
+                <h2>Your Pathway to Recovery</h2>
+            </div>
+            <div class="steps-container reveal">
+                <div class="steps-image">
+                    <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Hospital Reception">
+                    <div class="floating-badge">
+                        <i class="fas fa-user-nurse" style="color:var(--primary); font-size:1.5rem;"></i>
+                        <div><h5 style="margin:0;">Compassionate</h5><span style="font-size:0.8rem; color:gray;">Care & Support</span></div>
+                    </div>
+                </div>
+                <div class="steps-list">
+                    <div class="step-item">
+                        <div class="step-number">01</div>
+                        <div class="step-content">
+                            <h3>Appointment</h3>
+                            <p>Call <strong>+91 90090 99380</strong> or book online to schedule your visit.</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">02</div>
+                        <div class="step-content">
+                            <h3>Diagnosis</h3>
+                            <p>Get evaluated by our expert team using advanced diagnostics.</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">03</div>
+                        <div class="step-content">
+                            <h3>Treatment</h3>
+                            <p>Receive world-class treatment in our state-of-the-art facility.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Gallery</span>
+                <h2>Hospital Facilities & Moments</h2>
+            </div>
+            
+            <div class="swiper gallery-slider">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide gallery-slide"><img src="assets/images/1.jpg" alt="Facility 1"></div>
+                    <div class="swiper-slide gallery-slide"><img src="assets/images/2.jpg" alt="Facility 2"></div>
+                    <div class="swiper-slide gallery-slide"><img src="assets/images/3.jpg" alt="Facility 3"></div>
+                    <div class="swiper-slide gallery-slide"><img src="assets/images/4.jpg" alt="Facility 4"></div>
+                    <div class="swiper-slide gallery-slide"><img src="assets/images/5.jpg" alt="Facility 5"></div>
+                    <div class="swiper-slide gallery-slide"><img src="assets/images/6.jpg" alt="Facility 6"></div>
+                    <div class="swiper-slide gallery-slide"><img src="assets/images/7.jpg" alt="Facility 7"></div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <div class="container reveal">
+            <div class="section-header">
+                 <span class="section-label">Reviews</span>
+                <h2>What Patients Say</h2>
+            </div>
+            
+            <div class="overall-rating">
+                <span class="overall-num">4.7</span>
+                <span class="overall-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></span>
+                <span class="overall-text">Based on 500+ Reviews</span>
+            </div>
+
+            <div class="avatar-row">
+                <img src="https://i.pravatar.cc/150?img=11" class="avatar" onclick="showTestimonial(0)">
+                <img src="https://i.pravatar.cc/150?img=12" class="avatar" onclick="showTestimonial(1)">
+                <img src="https://i.pravatar.cc/150?img=5" class="avatar active" onclick="showTestimonial(2)">
+                <img src="https://i.pravatar.cc/150?img=8" class="avatar" onclick="showTestimonial(3)">
+                <img src="https://i.pravatar.cc/150?img=9" class="avatar" onclick="showTestimonial(4)">
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <h4 id="testimonial-name">Rahul Sharma</h4>
+                <p style="font-size: 0.9rem; color: var(--primary); font-weight: 500;">Mohammadpura Resident</p>
+                <p class="testimonial-text" id="testimonial-text">"The staff at Apple Hospital Burhanpur is very cooperative. The emergency service is fast and doctors are available 24/7."</p>
+            </div>
+            
+            <div style="margin-top: 30px;">
+                <button class="btn btn-outline" id="viewAllReviewsBtn">View All Reviews (20+)</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal-overlay" id="reviewsModal">
+        <div class="modal-box">
+            <span class="close-modal" id="closeReviewsBtn">×</span>
+            <h2 style="color:var(--text-dark); margin-bottom: 5px;">Patient Reviews</h2>
+            <div id="reviewsContainer" class="review-list">
+            </div>
+        </div>
     </div>
-    <div class="hero-img reveal">
-      <img src="assets/images/1.jpg" alt="Apple Hospital">
+
+    <section class="insurance" id="insurance">
+        <div class="container">
+            <div class="section-header reveal" style="margin-bottom: 20px;">
+                <span class="section-label">Partners</span>
+                <h2>Insurance & TPA</h2>
+            </div>
+            <div class="swiper insurance-slider">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide insurance-slide"><img src="assets/images/a.png" class="insurance-logo" alt="Insurance Partner"></div>
+                    <div class="swiper-slide insurance-slide"><img src="assets/images/b.png" class="insurance-logo" alt="Insurance Partner"></div>
+                    <div class="swiper-slide insurance-slide"><img src="assets/images/c.png" class="insurance-logo" alt="Insurance Partner"></div>
+                    <div class="swiper-slide insurance-slide"><img src="assets/images/d.png" class="insurance-logo" alt="Insurance Partner"></div>
+                    <div class="swiper-slide insurance-slide"><img src="assets/images/e.png" class="insurance-logo" alt="Insurance Partner"></div>
+                    <div class="swiper-slide insurance-slide"><img src="assets/images/f.webp" class="insurance-logo" alt="Insurance Partner"></div>
+                    <div class="swiper-slide insurance-slide"><img src="assets/images/g.jpg" class="insurance-logo" alt="Insurance Partner"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing" id="packages">
+        <div class="container reveal">
+            <div class="section-header">
+                 <span class="section-label">Checkups</span>
+                <h2>Health Packages</h2>
+            </div>
+            <div class="pricing-toggle">
+                <button class="toggle-btn active" id="individualBtn">Individual</button>
+                <button class="toggle-btn" id="familyBtn">Family</button>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Basic Checkup</h3>
+                    <div class="price" id="p1">₹1500</div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check-circle"></i> Physician Consult</li>
+                        <li><i class="fas fa-check-circle"></i> CBC & Blood Sugar</li>
+                        <li><i class="fas fa-check-circle"></i> Urine Routine</li>
+                    </ul>
+                    <button class="btn btn-outline" onclick="bookOnWhatsapp('Basic Checkup', 'p1')">Book Now</button>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="card-badge">Popular</div>
+                    <h3>Healthy Heart</h3>
+                    <div class="price" id="p2">₹3500</div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check-circle"></i> Cardiologist Consult</li>
+                        <li><i class="fas fa-check-circle"></i> ECG & 2D Echo</li>
+                        <li><i class="fas fa-check-circle"></i> Lipid Profile & TMT</li>
+                    </ul>
+                    <button class="btn btn-primary" style="background:var(--white); color:var(--primary)" onclick="bookOnWhatsapp('Healthy Heart Package', 'p2')">Book Now</button>
+                </div>
+                <div class="pricing-card">
+                    <h3>Full Body</h3>
+                    <div class="price" id="p3">₹5500</div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check-circle"></i> All Heart Features</li>
+                        <li><i class="fas fa-check-circle"></i> USG Abdomen</li>
+                        <li><i class="fas fa-check-circle"></i> Liver/Kidney Function</li>
+                    </ul>
+                    <button class="btn btn-outline" onclick="bookOnWhatsapp('Full Body Checkup', 'p3')">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="blog" id="blog">
+        <div class="container reveal">
+            <div class="section-header">
+                 <span class="section-label">Updates</span>
+                <h2>Latest News</h2>
+            </div>
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <div class="blog-img">
+                        <span class="blog-date">Latest</span>
+                        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Knee Surgery">
+                    </div>
+                    <div class="blog-content">
+                        <h4>Advances in Orthopedics</h4>
+                        <p>How modern technology is improving recovery times for knee replacement.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-img">
+                         <span class="blog-date">Events</span>
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Camp">
+                    </div>
+                    <div class="blog-content">
+                        <h4>Health Camp in Burhanpur</h4>
+                        <p>Join us this Sunday at Govindpuram Colony for a free screening.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-img">
+                         <span class="blog-date">Health</span>
+                        <img src="https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Heart">
+                    </div>
+                    <div class="blog-content">
+                        <h4>Managing Hypertension</h4>
+                        <p>Expert advice from our Cardiology department on keeping your BP in check.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section" id="faq">
+        <div class="container reveal">
+            <div class="section-header">
+                <span class="section-label">Common Questions</span>
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What are the OPD timings?</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our General OPD is open from 10:00 AM to 2:00 PM and 6:00 PM to 9:00 PM (Mon-Sat). Emergency services are available 24/7.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do you accept Ayushman Bharat cards?</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we are a fully authorized hospital for Ayushman Bharat Yojana. Please bring your card and Aadhar card for cashless treatment.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Is cashless insurance available?</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we have tie-ups with all major TPA and insurance companies including Star Health, HDFC Ergo, SBI General, and ICICI Lombard.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How can I book an appointment?</h3>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can book by calling +91 90090 99380, using the WhatsApp button on this website, or visiting the reception desk directly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="map-section">
+        <div class="map-container">
+            <iframe src="https://maps.google.com/maps?q=Apple%20Hospital%20Burhanpur&t=&z=13&ie=UTF8&iwloc=&output=embed" 
+            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            
+            <div class="map-overlay-card">
+                <h3><i class="fas fa-hospital-alt"></i> Visit Us</h3>
+                <p>Govindpuram Colony, Opp. Power House,<br>Mohammadpura, Burhanpur (M.P.)</p>
+                <a href="https://goo.gl/maps/xyz" target="_blank" class="btn btn-primary btn-sm" style="margin-top:10px;">Get Directions <i class="fas fa-location-arrow"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="logo" style="justify-content: center; color: var(--white); margin-bottom: 20px;">
+                <img src="assets/images/logo.png" alt="Apple Hospital Logo" style="height: 60px;">
+            </div>
+            <p style="max-width: 600px; margin: 0 auto;">Dedicated to providing world-class healthcare services at affordable prices to Burhanpur and Madhya Pradesh.</p>
+            <div class="footer-address">
+                <p><i class="fas fa-map-marker-alt"></i> Govindpuram Colony, Mohammadpura, Burhanpur, India, 450331</p>
+                <p><i class="fas fa-phone"></i> +91 90090 99380</p>
+                <p><i class="fas fa-envelope"></i> applehospital2015@gmail.com</p>
+            </div>
+            <div style="margin-top: 20px; font-size: 1.2rem;">
+                <a href="#" style="color:white; margin:0 10px;"><i class="fab fa-facebook"></i></a>
+                <a href="#" style="color:white; margin:0 10px;"><i class="fab fa-instagram"></i></a>
+                <a href="#" style="color:white; margin:0 10px;"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <p style="font-size: 0.8rem; margin-top: 20px; opacity:0.5;">© 2023 Apple Superspeciality Hospital. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <div class="fab-container">
+        <div class="float-btn" id="openModalBtn" data-tooltip="Book Appointment">
+            <i class="fas fa-notes-medical"></i>
+        </div>
+        <div class="float-btn" id="chatToggleBtn" data-tooltip="Chat Assistant">
+            <i class="fas fa-comments"></i>
+        </div>
     </div>
-  </div>
-</section>
-
-<section class="doctors" id="doctors">
-  <div class="container">
-    <div class="swiper doctors-slider">
-      <div class="swiper-wrapper">
-
-        <div class="swiper-slide"><img src="assets/images/DR.P.png"></div>
-        <div class="swiper-slide"><img src="assets/images/DR.H.png"></div>
-        <div class="swiper-slide"><img src="assets/images/DR.SJ.png"></div>
-        <div class="swiper-slide"><img src="assets/images/DR.S.png"></div>
-        <div class="swiper-slide"><img src="assets/images/DR.V.png"></div>
-        <div class="swiper-slide"><img src="assets/images/DR.R.png"></div>
-        <div class="swiper-slide"><img src="assets/images/DR.C.png"></div>
-
-      </div>
-      <div class="swiper-pagination"></div>
+    
+    <div id="scrollTopBtn" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
     </div>
-  </div>
-</section>
 
-<section class="gallery" id="gallery">
-  <div class="swiper gallery-slider">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide"><img src="assets/images/1.jpg"></div>
-      <div class="swiper-slide"><img src="assets/images/2.jpg"></div>
-      <div class="swiper-slide"><img src="assets/images/3.jpg"></div>
-      <div class="swiper-slide"><img src="assets/images/4.jpg"></div>
-      <div class="swiper-slide"><img src="assets/images/5.jpg"></div>
-      <div class="swiper-slide"><img src="assets/images/6.jpg"></div>
-      <div class="swiper-slide"><img src="assets/images/7.jpg"></div>
+    <div class="modal-overlay" id="enquiryModal">
+        <div class="modal-box">
+            <span class="close-modal" id="closeModalBtn">×</span>
+            <h2 style="color:var(--text-dark); margin-bottom: 5px;">Quick Enquiry</h2>
+            <p style="color:var(--text-light); font-size: 0.9rem; margin-bottom: 20px;">Fill the form and we will call you back.</p>
+            
+            <form class="modal-form" onsubmit="event.preventDefault(); alert('Thank you! We will contact you shortly.'); document.getElementById('enquiryModal').classList.remove('active');">
+                <input type="text" placeholder="Your Name" required>
+                <input type="tel" placeholder="Phone Number" required>
+                <select>
+                    <option value="">Select Department</option>
+                    <option value="Gynecology">Gynecology</option>
+                    <option value="Plastic Surgery">Plastic Surgery</option>
+                    <option value="Radiology">Radiology</option>
+                    <option value="General Medicine">General Medicine</option>
+                </select>
+                <textarea rows="3" placeholder="Message or Query"></textarea>
+                <button type="submit">Submit Enquiry</button>
+            </form>
+        </div>
     </div>
-  </div>
-</section>
 
-<section class="insurance">
-  <div class="swiper insurance-slider">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide"><img src="assets/images/a.png"></div>
-      <div class="swiper-slide"><img src="assets/images/b.png"></div>
-      <div class="swiper-slide"><img src="assets/images/c.png"></div>
-      <div class="swiper-slide"><img src="assets/images/d.png"></div>
-      <div class="swiper-slide"><img src="assets/images/e.png"></div>
-      <div class="swiper-slide"><img src="assets/images/f.webp"></div>
-      <div class="swiper-slide"><img src="assets/images/g.jpg"></div>
+    <div id="ah-chat">
+        <div id="ah-header">
+            <div class="header-left">
+                <div class="chat-avatar"></div>
+                <div class="header-text">
+                    <div class="title">Apple Hospital</div>
+                    <div class="subtitle">Virtual Care Assistant</div>
+                </div>
+            </div>
+            <div class="header-actions">
+                <i class="fas fa-redo-alt chat-action" onclick="setLang('')" title="Restart"></i>
+                <i class="fas fa-times chat-action" id="closeChatBtn" title="Close"></i>
+            </div>
+        </div>
+        <div id="ah-body"></div>
     </div>
-  </div>
-</section>
 
-<footer>
-  <img src="assets/images/logo.png" style="height:60px">
-  <p>© Apple Superspeciality Hospital</p>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-<script src="assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 </html>
