@@ -10,31 +10,34 @@ function closeMenu() {
     navLinks.classList.remove('active');
 }
 
-// 2. Swiper Logic (Doctors - 7 Cards Visible + Auto Swipe)
+// 2. Swiper Logic (Doctors - Infinite Loop 7 Visible)
 var swiper = new Swiper(".doctors-slider", {
     effect: "coverflow",
     grabCursor: true,
     centeredSlides: true,
     slidesPerView: "auto",
+    
+    // INFINITE LOOP SETTINGS
     loop: true,
+    loopedSlides: 20,         // Creates enough duplicates for infinite scrolling
+    loopAdditionalSlides: 5,  // Extra buffer to prevent stopping
     
-    // Create enough duplicates to ensure sides are never empty
-    loopedSlides: 20, 
-    
-    speed: 1000, // Smooth transition speed
+    speed: 1000,
     
     autoplay: {
-        delay: 2000, // Auto-swipe every 2 seconds
-        disableOnInteraction: false, // Continue swiping even after user touches it
-        pauseOnMouseEnter: false,    // Keep moving even when mouse is over
+        delay: 2000,
+        disableOnInteraction: false, // Keeps autoplaying after user swipes
+        pauseOnMouseEnter: false,    // Keeps moving even if mouse is over
     },
     
+    // VISUAL SETTINGS (1 Big, 3 Small on each side)
     coverflowEffect: {
-        rotate: 0,        // Keep cards flat
-        stretch: 0,       // 0 overlap (adjust to -10 if you want them tighter)
-        depth: 150,       // Deep perspective to shrink side cards
-        modifier: 1.5,    // Effect intensity
-        slideShadows: false, // Turn off shadows for cleaner look (optional: change to true)
+        rotate: 0,        // Keep cards straight
+        stretch: 10,      // Small gap between cards (prevents "stuck" look)
+        depth: 50,        // Low depth makes side cards more visible
+        modifier: 1,      
+        slideShadows: false, // Turn off shadows for cleaner visibility
+        scale: 0.85,      // Side cards are 85% size of the middle one
     },
     
     pagination: {
@@ -43,20 +46,20 @@ var swiper = new Swiper(".doctors-slider", {
     },
     
     breakpoints: {
-        // Mobile: Show 3 (1 Center + 1 on each side)
+        // Mobile: Show 3 tight cards
         320: {
             coverflowEffect: {
-                depth: 200,
-                modifier: 1,
-                stretch: 15
+                depth: 100,
+                scale: 0.9,
+                stretch: 10
             }
         },
-        // Desktop: Show 7 (1 Center + 3 on each side)
+        // Desktop: Show 7 cards distributed
         1024: {
             coverflowEffect: {
-                depth: 120,   // Adjusted depth for desktop
-                modifier: 2,  // Stronger effect
-                stretch: 0    
+                depth: 50,
+                scale: 0.85,
+                stretch: 0 
             }
         }
     }
