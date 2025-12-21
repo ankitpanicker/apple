@@ -268,7 +268,7 @@ body {
 .feature-card h3 { color: var(--text-dark); font-size: 1.3rem; margin-bottom: 10px; }
 .feature-card p { color: var(--text-light); line-height: 1.6; font-size: 0.95rem; }
 
-/* --- DOCTORS SWIPER SECTION --- */
+/* --- DOCTORS SWIPER SECTION (Screenshot Look + Hover Reveal) --- */
 .doctors { 
     padding: var(--section-pad); 
     background: var(--bg-light);
@@ -277,34 +277,39 @@ body {
 
 .doctors-slider {
     width: 100%;
-    padding-top: 60px; /* More space for the big center card */
+    padding-top: 60px;
     padding-bottom: 60px;
 }
 
 .swiper-slide {
     background-position: center;
     background-size: cover;
-    width: 220px; /* Smaller width allows 7 cards to fit on screen */
-    height: 350px;
-    transition: transform 0.5s ease;
-    opacity: 1; /* Always visible */
+    width: 240px; /* Perfect width to fit 7 items (3+1+3) on screen */
+    height: 380px;
+    transition: all 0.5s ease;
+    /* Default state for side cards (Smaller & slightly dimmed) */
+    transform: scale(0.85); 
+    opacity: 0.8; 
+    filter: blur(0px); /* Clean look like screenshot */
 }
 
 /* The "Big" Middle Card */
 .swiper-slide-active {
     z-index: 20;
-    transform: scale(1.25); /* 25% bigger than side cards */
-    box-shadow: 0 15px 40px rgba(0,86,179,0.3); /* Glow effect */
+    transform: scale(1.15) !important; /* Make it pop */
+    opacity: 1;
+    box-shadow: 0 20px 50px rgba(0,86,179,0.25); /* Glow effect */
 }
 
+/* --- CARD STYLING --- */
 .doc-card {
     position: relative;
     border-radius: 20px;
     overflow: hidden;
     width: 100%;
     height: 100%;
-    box-shadow: var(--shadow);
-    background: linear-gradient(135deg, #004494 0%, #0f172a 100%);
+    background: linear-gradient(180deg, #0056b3 0%, #003366 100%);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
 
 .doc-card img {
@@ -312,53 +317,82 @@ body {
     height: 100%;
     object-fit: contain; 
     object-position: bottom center;
-    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.3));
     transition: transform 0.5s ease;
 }
 
 .doc-card:hover img {
-    transform: scale(1.05);
+    transform: scale(1.05); /* Subtle zoom on image */
 }
 
+/* --- OVERLAY & HOVER REVEAL LOGIC --- */
 .doc-overlay {
     position: absolute;
-    bottom: 10px;
-    left: 10px;
-    right: 10px;
-    background: rgba(255, 255, 255, 0.95); 
-    backdrop-filter: blur(10px);
-    padding: 12px;
-    border-radius: 12px;
+    bottom: 15px;
+    left: 15px;
+    right: 15px;
+    background: #ffffff; 
+    padding: 15px;
+    border-radius: 15px;
     text-align: center;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transform: translateY(45px); /* Push down to hide buttons initially */
 }
 
-.doc-name { font-size: 0.9rem; font-weight: 700; color: var(--text-dark); margin-bottom: 2px; }
-.doc-role { font-size: 0.7rem; color: var(--primary); font-weight: 600; text-transform: uppercase; }
+.doc-name { font-size: 0.95rem; font-weight: 700; color: var(--text-dark); margin-bottom: 2px; }
+.doc-role { font-size: 0.75rem; color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
 
+/* The Social Buttons (Hidden by default via translateY on parent) */
 .doc-socials {
-    margin-top: 8px;
+    margin-top: 15px;
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 15px;
+    opacity: 0; /* Hidden */
+    transition: opacity 0.3s ease 0.1s; /* Slight delay */
 }
 
 .doc-socials a {
     text-decoration: none;
     color: var(--text-med);
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    width: 28px;
-    height: 28px;
-    background: #f0f0f0;
+    font-size: 1.1rem;
+    width: 35px;
+    height: 35px;
+    background: #f1f5f9;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.3s ease;
 }
 
 .doc-socials a:first-child:hover { background: var(--primary); color: white; transform: translateY(-3px); }
 .doc-socials a:last-child:hover { background: #25D366; color: white; transform: translateY(-3px); }
+
+/* --- HOVER EFFECT (Desktop Only) --- */
+@media (min-width: 993px) {
+    .doc-card:hover .doc-overlay {
+        transform: translateY(0); /* Slide up to show buttons */
+    }
+    .doc-card:hover .doc-socials {
+        opacity: 1; /* Fade in buttons */
+    }
+}
+
+/* --- MOBILE ADJUSTMENTS (Keep buttons visible) --- */
+@media (max-width: 992px) {
+    .doc-overlay {
+        transform: translateY(0); /* Always visible on mobile */
+        bottom: 10px; left: 10px; right: 10px; padding: 12px;
+    }
+    .doc-socials {
+        opacity: 1; /* Always visible on mobile */
+        margin-top: 8px;
+    }
+    .swiper-slide-active {
+        transform: scale(1.1) !important;
+    }
+}
 
 /* --- STEPS --- */
 .steps-section { padding: var(--section-pad); background-color: var(--white); }
