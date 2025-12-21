@@ -10,34 +10,28 @@ function closeMenu() {
     navLinks.classList.remove('active');
 }
 
-// 2. Swiper Logic (Doctors - Infinite Loop 7 Visible)
+// 2. Swiper Logic (Doctors - Flat Scale Look matching Screenshot)
 var swiper = new Swiper(".doctors-slider", {
     effect: "coverflow",
     grabCursor: true,
     centeredSlides: true,
     slidesPerView: "auto",
+    loop: true,            
+    loopedSlides: 14,      // High number for smooth infinite scrolling
+    speed: 800,           
     
-    // INFINITE LOOP SETTINGS
-    loop: true,
-    loopedSlides: 20,         // Creates enough duplicates for infinite scrolling
-    loopAdditionalSlides: 5,  // Extra buffer to prevent stopping
-    
-    speed: 1000,
-    
-    autoplay: {
-        delay: 2000,
-        disableOnInteraction: false, // Keeps autoplaying after user swipes
-        pauseOnMouseEnter: false,    // Keeps moving even if mouse is over
+    // VISUAL SETTINGS (Flat look, gaps, sizing via CSS)
+    coverflowEffect: {
+        rotate: 0,        // No rotation (matches screenshot)
+        stretch: 20,      // Positive value = Space between cards
+        depth: 0,         // No depth perspective (keeps them flat)
+        modifier: 1,      
+        slideShadows: false, // Cleaner look without shadows
     },
     
-    // VISUAL SETTINGS (1 Big, 3 Small on each side)
-    coverflowEffect: {
-        rotate: 0,        // Keep cards straight
-        stretch: 10,      // Small gap between cards (prevents "stuck" look)
-        depth: 50,        // Low depth makes side cards more visible
-        modifier: 1,      
-        slideShadows: false, // Turn off shadows for cleaner visibility
-        scale: 0.85,      // Side cards are 85% size of the middle one
+    autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
     },
     
     pagination: {
@@ -46,20 +40,16 @@ var swiper = new Swiper(".doctors-slider", {
     },
     
     breakpoints: {
-        // Mobile: Show 3 tight cards
+        // Mobile: Tighter spacing
         320: {
             coverflowEffect: {
-                depth: 100,
-                scale: 0.9,
                 stretch: 10
             }
         },
-        // Desktop: Show 7 cards distributed
+        // Desktop: Distinct spacing for 7 cards
         1024: {
             coverflowEffect: {
-                depth: 50,
-                scale: 0.85,
-                stretch: 0 
+                stretch: 30 // Space them out nicely
             }
         }
     }
