@@ -10,88 +10,26 @@ function closeMenu() {
     navLinks.classList.remove('active');
 }
 
-// 2. Swiper Logic (Doctors - 3D Infinite Flow for 7 Cards)
+// 2. Swiper Logic (Doctors)
 var swiper = new Swiper(".doctors-slider", {
-    effect: "coverflow",
-    grabCursor: true,
-    centeredSlides: true,
-    slidesPerView: "auto", // Allows cards to stack naturally
-    loop: true,            // Infinite looping
-    loopedSlides: 12,      // High number ensures no gaps during loop
-    speed: 1000,           // Smooth transition speed
-    
-    // The 3D Effect Settings to stack 3 on each side
-    coverflowEffect: {
-        rotate: 0,         // Keep cards flat
-        stretch: 0,        // No spacing stretch
-        depth: 100,        // Depth pushes side cards back
-        modifier: 2.5,     // Multiplier for the effect
-        slideShadows: true,// Adds shadow for depth perception
-    },
-    
-    autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-    },
-    pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-    },
-    
-    // Responsive adjustments
-    breakpoints: {
-        320: {
-            coverflowEffect: {
-                depth: 300, // Deeper on mobile
-                modifier: 1,
-                stretch: 10
-            }
-        },
-        1024: {
-            coverflowEffect: {
-                depth: 100,
-                modifier: 2.5,
-                stretch: 0
-            }
-        }
-    }
+    effect: "coverflow", grabCursor: true, centeredSlides: true, slidesPerView: "auto", loop: true, speed: 800,
+    coverflowEffect: { rotate: 0, stretch: 0, depth: 150, modifier: 2.5, slideShadows: true, },
+    autoplay: { delay: 2500, disableOnInteraction: false, },
+    pagination: { el: ".swiper-pagination", clickable: true, },
 });
 
 // 3. Swiper Logic (Gallery)
 var gallerySwiper = new Swiper(".gallery-slider", {
-    slidesPerView: 1,
-    spaceBetween: 20,
-    loop: true,
-    autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-    },
-    pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-    },
-    breakpoints: {
-        640: { slidesPerView: 2 },
-        1024: { slidesPerView: 3 },
-    }
+    slidesPerView: 1, spaceBetween: 20, loop: true, autoplay: { delay: 3000, disableOnInteraction: false, },
+    pagination: { el: ".swiper-pagination", clickable: true, },
+    breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 }, }
 });
 
-// 4. Swiper Logic (Insurance - INFINITE LINEAR SCROLL)
+// 4. Swiper Logic (Insurance - INFINITE SCROLL)
 var insuranceSwiper = new Swiper(".insurance-slider", {
-    slidesPerView: 2,
-    spaceBetween: 20,
-    loop: true,
-    speed: 4000, // Speed of the ticker (higher = slower/smoother)
-    autoplay: {
-        delay: 0, // 0 delay makes it continuous
-        disableOnInteraction: false,
-        pauseOnMouseEnter: false // Never pause
-    },
-    breakpoints: {
-        640: { slidesPerView: 3 },
-        768: { slidesPerView: 4 },
-        1024: { slidesPerView: 5 },
-    }
+    slidesPerView: 2, spaceBetween: 20, loop: true, speed: 4000, // Slower speed for better reading
+    autoplay: { delay: 0, disableOnInteraction: false, pauseOnMouseEnter: false }, // No Pause
+    breakpoints: { 640: { slidesPerView: 3 }, 768: { slidesPerView: 4 }, 1024: { slidesPerView: 5 }, }
 });
 
 // 5. Reveal Animation
@@ -156,7 +94,7 @@ function bookOnWhatsapp(planName, priceId) {
     window.open(url, '_blank');
 }
 
-// 9. Testimonials (Auto-Rotate)
+// 9. Testimonials
 const testimonialData = [
     { name: "Rahul Sharma", role: "Mohammadpura Resident", text: "The staff at Apple Hospital Burhanpur is very cooperative. The emergency service is fast and doctors are available 24/7." },
     { name: "Priya Singh", role: "Maternity", text: "Dr. Surekha Pooniwala is excellent. Very good facilities for delivery. The hospital is clean and the nursing staff is very supportive." },
@@ -188,7 +126,7 @@ setInterval(() => {
     showTestimonial(currentTestimonial);
 }, 5000);
 
-// 10. Modals (Enquiry & Reviews)
+// 10. Modals
 const enquiryModal = document.getElementById('enquiryModal');
 const reviewsModal = document.getElementById('reviewsModal');
 const openEnquiryBtn = document.getElementById('openModalBtn');
@@ -197,46 +135,24 @@ const closeEnquiryBtn = document.getElementById('closeModalBtn');
 const closeReviewsBtn = document.getElementById('closeReviewsBtn');
 
 openEnquiryBtn.addEventListener('click', () => enquiryModal.classList.add('active'));
-
 openReviewsBtn.addEventListener('click', () => {
     const container = document.getElementById('reviewsContainer');
     container.innerHTML = ""; 
-    const extraReviews = [
-        {text:"Excellent care and support by Dr. Hemant Mahajan.", rating:5},
-        {text:"Cleanest hospital in Burhanpur.", rating:5},
-        {text:"Nurses are very polite.", rating:4},
-        {text:"Wait time was a bit long.", rating:3},
-        {text:"Parking space is limited.", rating:2},
-        {text:"Dr. Swati Jain is a magician.", rating:5},
-        {text:"Billing process was transparent.", rating:4},
-        {text:"Pharmacy is well stocked.", rating:5}
-    ];
-    
-    // Helper for stars
-    function getStars(rating) {
-        let s = '';
-        for(let i=0; i<5; i++) s += (i<rating) ? '<i class="fas fa-star"></i>' : '<i class="far fa-star"></i>';
-        return s;
-    }
-
+    const extraReviews = [{text:"Excellent care.", rating:5}, {text:"Clean hospital.", rating:5}, {text:"Polite staff.", rating:4}, {text:"Long wait time.", rating:3}, {text:"Parking issue.", rating:2}, {text:"Best plastic surgeon.", rating:5}, {text:"Quick billing.", rating:4}, {text:"Good pharmacy.", rating:5}];
     extraReviews.forEach(r => {
-        const div = document.createElement('div');
-        div.className = 'review-item';
-        div.innerHTML = `<div class="review-header"><span class="review-author">Patient</span><span class="review-rating">${getStars(r.rating)}</span></div><p class="review-body">"${r.text}"</p>`;
-        container.appendChild(div);
+        container.innerHTML += `<div class="review-item"><div class="review-header"><span class="review-author">Patient</span><span class="review-rating">${'★'.repeat(r.rating)}</span></div><p class="review-body">"${r.text}"</p></div>`;
     });
     reviewsModal.classList.add('active');
 });
 
 closeEnquiryBtn.addEventListener('click', () => enquiryModal.classList.remove('active'));
 closeReviewsBtn.addEventListener('click', () => reviewsModal.classList.remove('active'));
-
 window.addEventListener('click', (e) => {
     if(e.target === enquiryModal) enquiryModal.classList.remove('active');
     if(e.target === reviewsModal) reviewsModal.classList.remove('active');
 });
 
-// 11. FAQ & Scroll To Top
+// 11. FAQ & Scroll
 document.querySelectorAll('.faq-item').forEach(item => {
     item.querySelector('.faq-question').addEventListener('click', () => {
         document.querySelectorAll('.faq-item').forEach(i => { if(i!==item) i.classList.remove('active'); });
@@ -256,14 +172,14 @@ const chatToggleBtn = document.getElementById("chatToggleBtn");
 const closeChatBtn = document.getElementById("closeChatBtn");
 const chatBody = document.getElementById("ah-body");
 
-const chatPhone = "+919009099380";
-const chatWhatsapp = "https://wa.me/919009099380";
+const phone = "+919009099380";
+const whatsapp = "https://wa.me/919009099380";
 let lang = "";
 
 // Toggle
 chatToggleBtn.addEventListener('click', () => {
     chatWindow.classList.toggle('active');
-    if(chatBody.innerHTML.trim() === "") initChat();
+    if(chatBody.innerHTML === "") initChat();
 });
 closeChatBtn.addEventListener('click', () => chatWindow.classList.remove('active'));
 
@@ -296,7 +212,7 @@ function showOptions(options, type) {
 }
 
 function handleOption(val, text, type) {
-    // Remove old options
+    // Remove options
     const opts = document.querySelector('.options-container:last-child');
     if(opts) opts.remove();
 
@@ -314,7 +230,7 @@ function handleOption(val, text, type) {
 
 function setLang(l) {
     lang = l;
-    if(l === "") { chatBody.innerHTML = ""; initChat(); return; } // Restart logic
+    if(l === "") { chatBody.innerHTML = ""; initChat(); return; } // Restart
     
     bot(lang === "hi" 
         ? "🙏 Apple Hospital में आपका स्वागत है। मैं आपकी क्या मदद कर सकता हूँ?" 
@@ -352,23 +268,23 @@ function handleMenu(val) {
             break;
         case "doc":
             bot(lang==="hi" ? "हमारे पास स्त्री रोग, रेडियोलॉजी, प्लास्टिक सर्जरी और सामान्य चिकित्सा के विशेषज्ञ हैं।" : "We have specialists in Gynecology, Radiology, Plastic Surgery, and General Medicine.");
-            setTimeout(() => showMainMenu(), 2500);
+            setTimeout(() => showMainMenu(), 1500);
             break;
         case "serv":
             bot(lang==="hi" ? "हम 24/7 इमरजेंसी, सोनोग्राफी, सीटी स्कैन, डिजिटल एक्स-रे और फार्मेसी की सुविधा प्रदान करते हैं।" : "We offer 24/7 Emergency, Sonography, CT Scan, Digital X-Ray, and Pharmacy services.");
-            setTimeout(() => showMainMenu(), 2500);
+            setTimeout(() => showMainMenu(), 1500);
             break;
         case "time":
             bot(lang==="hi" ? "🕒 OPD समय: सुबह 10-2, शाम 6-9 (सोम-शनि)। इमरजेंसी 24/7 खुली है।" : "🕒 OPD Timings: 10am-2pm, 6pm-9pm (Mon-Sat). Emergency is open 24/7.");
-            setTimeout(() => showMainMenu(), 3000);
+            setTimeout(() => showMainMenu(), 2000);
             break;
         case "ins":
             bot(lang==="hi" ? "✅ हम आयुष्मान भारत और सभी प्रमुख TPA बीमा स्वीकार करते हैं।" : "✅ We accept Ayushman Bharat and all major TPA insurances.");
-            setTimeout(() => showMainMenu(), 2500);
+            setTimeout(() => showMainMenu(), 1500);
             break;
         case "addr":
             bot(lang==="hi" ? "📍 पता: गोविंदपुरम कॉलोनी, पावर हाउस के सामने, बुरहानपुर।" : "📍 Address: Govindpuram Colony, Opp. Power House, Burhanpur.");
-            setTimeout(() => showMainMenu(), 3000);
+            setTimeout(() => showMainMenu(), 2000);
             break;
         case "cont":
             bot(lang==="hi" ? "संपर्क विवरण:" : "Contact Details:");
@@ -380,8 +296,8 @@ function handleMenu(val) {
 function showCTA() {
     const html = `
     <div class="cta-card">
-        <a href="tel:${chatPhone}" class="call-btn"><i class="fas fa-phone"></i> ${lang==="hi"?"कॉल करें":"Call Now"}</a>
-        <a href="${chatWhatsapp}" target="_blank" class="wa-btn"><i class="fab fa-whatsapp"></i> ${lang==="hi"?"व्हाट्सएप":"WhatsApp"}</a>
+        <a href="tel:${phone}" class="call-btn"><i class="fas fa-phone"></i> ${lang==="hi"?"कॉल करें":"Call Now"}</a>
+        <a href="${whatsapp}" target="_blank" class="wa-btn"><i class="fab fa-whatsapp"></i> ${lang==="hi"?"व्हाट्सएप":"WhatsApp"}</a>
     </div>`;
     chatBody.innerHTML += html;
     chatBody.scrollTop = chatBody.scrollHeight;
@@ -390,5 +306,5 @@ function showCTA() {
     setTimeout(() => {
         bot(lang==="hi" ? "क्या कुछ और मदद चाहिए?" : "Do you need anything else?");
         showMainMenu();
-    }, 4000);
+    }, 3000);
 }
