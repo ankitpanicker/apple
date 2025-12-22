@@ -245,18 +245,27 @@ body {
 
 .hero-tagline {
     display: inline-block;
-    padding: 5px 15px;
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin: 14px 0 10px;
+    padding: 6px 16px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    
+    /* Gradient Text Logic */
+    background: linear-gradient(90deg, #6366f1, #a855f7, #6366f1);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s linear infinite;
+    
+    border: 1px solid #e5e7eb;
     border-radius: 999px;
-    color: #ffffff;
-    font-size: 0.75rem;
-    letter-spacing: 1.5px;
 }
 
+@keyframes shine {
+    to { background-position: 200% center; }
+}
 
 .hero-text { flex: 1; max-width: 600px; }
 .hero h1 { font-size: 3rem; line-height: 1.2; color: var(--text-dark); margin-bottom: 20px; }
