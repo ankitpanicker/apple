@@ -245,16 +245,17 @@ body {
 
 .hero-tagline {
     display: inline-block;
-    padding: 5px 15px;
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin: 14px 0 10px;
+    padding: 6px 18px; /* Slightly wider for elegance */
+    font-size: 0.7rem;
+    font-weight: 700; /* Bolder font for impact */
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #4f46e5; /* Primary brand color */
+    background: rgba(79, 70, 229, 0.08); /* Tinted background */
+    border: 1px solid rgba(79, 70, 229, 0.2);
     border-radius: 999px;
-    color: #ffffff;
-    font-size: 0.75rem;
-    letter-spacing: 1.5px;
+    backdrop-filter: blur(4px); /* Adds a high-end glass effect */
 }
 
 
