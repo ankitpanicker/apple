@@ -314,7 +314,14 @@ body {
     font-weight: 300;
 }
 
+#dna-canvas-container {
+    filter: drop-shadow(0 0 15px rgba(255, 209, 220, 0.3));
+    transition: filter 0.5s ease;
+}
 
+#dna-canvas-container:hover {
+    filter: drop-shadow(0 0 25px rgba(185, 226, 255, 0.5));
+}
 
 
 /* =========================================
