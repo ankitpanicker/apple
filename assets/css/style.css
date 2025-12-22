@@ -222,60 +222,73 @@ body {
    4. HERO SECTION
    ========================================= */
 .hero {
-    min-height: calc(85vh - var(--nav-height));
-    display: flex;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
-    padding: 20px 0;
-    background: linear-gradient(to right, var(--bg-light), var(--white));
+    background: linear-gradient(
+        180deg,
+        #f6f9ff 0%,
+        #eef3ff 100%
+    );
+    padding: 90px 60px;
 }
 
-.hero-bg-video {
-    display: none; 
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0;
-    opacity: 0.3; 
+.hero-content {
+    max-width: 720px;
 }
 
-.hero-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 25px;
-    z-index: 1; 
+/* TOP PILL */
+.hero-pill {
+    display: inline-block;
+    padding: 6px 14px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+
+    color: #1f6fd0;
+    background: #ffffff;
+
+    border-radius: 999px;
+    box-shadow: 0 4px 12px rgba(31, 111, 208, 0.12);
+    margin-bottom: 22px;
 }
 
-.hero-text { flex: 1; max-width: 600px; }
-.hero h1 {
-    font-size: 3rem;
-    line-height: 1.2;
-    margin-bottom: 20px;
-    font-weight: 700;
-    letter-spacing: -0.5px;
+/* MAIN TITLE — INDIGO GRADIENT */
+.hero-title {
+    font-size: clamp(2.4rem, 4vw, 3.2rem);
+    line-height: 1.15;
+    font-weight: 800;
+    margin-bottom: 18px;
+    letter-spacing: -0.6px;
 
-    /* SOLID BLUE TEXT */
-    color: #2f5fcf;
+    background: linear-gradient(
+        180deg,
+        #1da1dc 0%,
+        #1f6fd0 50%,
+        #2b2f83 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 
-    /* EMBOSSED DEPTH (LIKE IMAGE) */
     text-shadow:
-        0 1px 0 #1f3f8a,
-        0 2px 2px rgba(0, 0, 0, 0.25);
+        0 1px 0 rgba(255,255,255,0.6),
+        0 4px 10px rgba(0,0,0,0.25);
 }
 
+/* TAGLINE */
+.hero-tagline {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #2b2f83;
+    margin-bottom: 20px;
+}
 
-.hero p { font-size: 1.1rem; color: var(--text-light); margin-bottom: 30px; line-height: 1.7; }
-.hero-btns { display: flex; gap: 15px; }
-.hero-img { flex: 1; display: flex; justify-content: flex-end; position: relative; }
-.hero-img img { width: 95%; max-width: 600px; height: auto; border-radius: 30px 30px 30px 100px; box-shadow: var(--shadow); z-index: 1; }
+/* DESCRIPTION */
+.hero-desc {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #475569;
+    max-width: 520px;
+}
 
 /* --- Helix Hero --- */
 .helix-hero {
