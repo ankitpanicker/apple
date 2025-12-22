@@ -247,6 +247,76 @@ body {
 .hero-img { flex: 1; display: flex; justify-content: flex-end; position: relative; }
 .hero-img img { width: 95%; max-width: 600px; height: auto; border-radius: 30px 30px 30px 100px; box-shadow: var(--shadow); z-index: 1; }
 
+/* --- Helix Hero --- */
+.helix-hero {
+    position: relative;
+    height: 100vh;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+.helix-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 8%;
+}
+
+.helix-svg {
+    height: 120%;
+    opacity: 0.9;
+}
+
+.helix-group circle {
+    fill: none;
+    stroke: #45bfd3;
+    stroke-width: 4;
+    opacity: 0.85;
+    filter: drop-shadow(0 0 12px rgba(69,191,211,0.25));
+    animation: helixRotate 12s linear infinite;
+    transform-origin: center;
+}
+
+.helix-group circle:nth-child(even) {
+    animation-direction: reverse;
+    opacity: 0.6;
+}
+
+@keyframes helixRotate {
+    from {
+        transform: rotate(0deg) translateX(40px);
+    }
+    to {
+        transform: rotate(360deg) translateX(40px);
+    }
+}
+
+/* Text placement */
+.helix-hero .hero-container {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 80px;
+}
+
+.helix-hero h1 {
+    font-weight: 400;
+    letter-spacing: -0.5px;
+}
+
+.helix-hero p {
+    max-width: 480px;
+    font-weight: 300;
+}
+
+
+
+
 /* =========================================
    5. STATS BAR
    ========================================= */
