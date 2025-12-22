@@ -33,13 +33,42 @@
     scroll-behavior: smooth;
 }
 
-body {
-    background: var(--bg-body);
-    color: var(--text-med);
-    overflow-x: hidden;
-    padding-top: var(--nav-height);
+/* 1. Logo Container & Link */
+.logo {
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
 
+.logo-scroll-top {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: var(--transition); /* Using your 0.4s cubic-bezier */
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* 2. Touch & Hover Effects */
+.logo-scroll-top:hover {
+    opacity: 0.8;
+}
+
+.logo-scroll-top:active {
+    opacity: 0.6;
+    transform: scale(0.95); /* Better tactile feedback for "Apple Hospital" */
+}
+
+/* 3. Image sizing */
+.logo img {
+    height: 50px; /* Adjust based on your actual logo proportions */
+    width: auto;
+    object-fit: contain;
+}
+
+/* 4. Fix for Scroll-to-Top Offset */
+:target {
+    scroll-margin-top: var(--nav-height);
+}
 /* =========================================
    2. UTILITIES & BUTTONS
    ========================================= */
