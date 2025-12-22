@@ -586,5 +586,30 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="assets/js/main.js"></script>
+<!-- REMOVE SPLINE WATERMARK -->
+<script>
+    (function removeSplineWatermark() {
+        const interval = setInterval(() => {
+            const viewer = document.querySelector('spline-viewer');
+            if (!viewer || !viewer.shadowRoot) return;
+
+            const style = document.createElement('style');
+            style.textContent = `
+                a[href*="spline"],
+                .spline-watermark,
+                #logo {
+                    display: none !important;
+                    visibility: hidden !important;
+                    opacity: 0 !important;
+                }
+            `;
+            viewer.shadowRoot.appendChild(style);
+
+            clearInterval(interval);
+        }, 100);
+    })();
+</script>
+
+    
 </body>
 </html>
