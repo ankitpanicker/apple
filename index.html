@@ -580,5 +580,97 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="assets/js/main.js"></script>
+    <script type="importmap">
+    { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
+</script>
+
+<script type="module">
+    import * as THREE from 'three';
+
+    const container = document.getElementById('dna-canvas-container');
+    const scene = new THREE.Scene();
+    
+    // Transparent background to blend with your hero section
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    container.appendChild(renderer.domElement);
+
+    const aspect = container.clientWidth / container.clientHeight;
+    const d = 4;
+    const camera = new THREE.OrthographicCamera(-d * aspect, d * aspect, d, -d, 0.1, 1000);
+    camera.position.set(0, 0, 10);
+
+    // Soft clinical lighting
+    const ambient = new THREE.AmbientLight(0xffffff, 1.5);
+    scene.add(ambient);
+    const directional = new THREE.DirectionalLight(0xffffff, 1);
+    directional.position.set(5, 10, 7);
+    scene.add(directional);
+
+    const dnaGroup = new THREE.Group();
+    scene.add(dnaGroup);
+
+    // Colors matching your "Best Care" vibe
+    const matPink = new THREE.MeshPhysicalMaterial({ color: 0xFFD1DC, roughness: 0.3 });
+    const matBlue = new THREE.MeshPhysicalMaterial({ color: 0xB9E2FF, roughness: 0.3 });
+    const matWhite = new THREE.MeshStandardMaterial({ color: 0xFFFFFF });
+
+    const sphereGeo = new THREE.SphereGeometry(0.15, 32, 32);
+    const rungGeo = new THREE.CylinderGeometry(0.03, 0.03, 2, 16);
+    rungGeo.rotateZ(Math.PI / 2);
+
+    const levels = 30;
+    const spacing = 0.3;
+    const twist = 0.4;
+    const radius = 1.0;
+
+    const points1 = [];
+    const points2 = [];
+
+    for (let i = 0; i < levels; i++) {
+        const y = (i - levels / 2) * spacing;
+        const angle = i * twist;
+
+        const pos1 = new THREE.Vector3(Math.cos(angle) * radius, y, Math.sin(angle) * radius);
+        const s1 = new THREE.Mesh(sphereGeo, matPink);
+        s1.position.copy(pos1);
+        dnaGroup.add(s1);
+        points1.push(pos1);
+
+        const angle2 = angle + Math.PI;
+        const pos2 = new THREE.Vector3(Math.cos(angle2) * radius, y, Math.sin(angle2) * radius);
+        const s2 = new THREE.Mesh(sphereGeo, matBlue);
+        s2.position.copy(pos2);
+        dnaGroup.add(s2);
+        points2.push(pos2);
+
+        if (i % 2 === 0) {
+            const rung = new THREE.Mesh(rungGeo, matWhite);
+            rung.position.y = y;
+            rung.rotation.y = -angle;
+            dnaGroup.add(rung);
+        }
+    }
+
+    function animate() {
+        requestAnimationFrame(animate);
+        dnaGroup.rotation.y += 0.005;
+        dnaGroup.rotation.z = Math.sin(Date.now() * 0.0005) * 0.05;
+        renderer.render(scene, camera);
+    }
+
+    window.addEventListener('resize', () => {
+        const w = container.clientWidth;
+        const h = container.clientHeight;
+        const newAspect = w / h;
+        camera.left = -d * newAspect;
+        camera.right = d * newAspect;
+        camera.updateProjectionMatrix();
+        renderer.setSize(w, h);
+    });
+
+    animate();
+</script>
 </body>
 </html>
