@@ -255,7 +255,28 @@ body {
 }
 
 .hero-text { flex: 1; max-width: 600px; }
-.hero h1 { font-size: 3rem; line-height: 1.2; color: var(--text-dark); margin-bottom: 20px; }
+.hero h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    font-weight: 700;
+    letter-spacing: -0.6px;
+
+    /* SAME MEDICAL BLUE GRADIENT */
+    background: linear-gradient(
+        180deg,
+        #1da1dc 0%,   /* light medical blue */
+        #1f6fd0 55%,  /* hospital blue */
+        #2b2f83 100%  /* deep navy */
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    /* MATTE DEPTH (NO GLOSS) */
+    text-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+
 .hero p { font-size: 1.1rem; color: var(--text-light); margin-bottom: 30px; line-height: 1.7; }
 .hero-btns { display: flex; gap: 15px; }
 .hero-img { flex: 1; display: flex; justify-content: flex-end; position: relative; }
