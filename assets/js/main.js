@@ -44,6 +44,30 @@ function reveal() {
 }
 reveal();
 
+window.addEventListener('resize', () => {
+    const w = container.clientWidth;
+    const h = container.clientHeight;
+    
+    // Update Camera
+    const newAspect = w / h;
+    camera.left = -d * newAspect;
+    camera.right = d * newAspect;
+    camera.updateProjectionMatrix();
+    
+    // Update Renderer
+    renderer.setSize(w, h);
+
+    // Responsive Scaling
+    if (w < 768) {
+        dnaGroup.scale.set(0.7, 0.7, 0.7); // Smaller on mobile
+    } else {
+        dnaGroup.scale.set(1, 1, 1);
+    }
+});
+
+// Trigger once on load to set initial scale
+window.dispatchEvent(new Event('resize'));
+
 // 6. Stats Counter
 const counters = document.querySelectorAll('.stat-number');
 let hasCounted = false;
