@@ -260,22 +260,17 @@ body {
     line-height: 1.2;
     margin-bottom: 20px;
     font-weight: 700;
-    letter-spacing: -0.6px;
+    letter-spacing: -0.5px;
 
-    /* SAME MEDICAL BLUE GRADIENT */
-    background: linear-gradient(
-        180deg,
-        #1da1dc 0%,   /* light medical blue */
-        #1f6fd0 55%,  /* hospital blue */
-        #2b2f83 100%  /* deep navy */
-    );
+    /* SOLID BLUE TEXT */
+    color: #2f5fcf;
 
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-    /* MATTE DEPTH (NO GLOSS) */
-    text-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    /* EMBOSSED DEPTH (LIKE IMAGE) */
+    text-shadow:
+        0 1px 0 #1f3f8a,
+        0 2px 2px rgba(0, 0, 0, 0.25);
 }
+
 
 .hero p { font-size: 1.1rem; color: var(--text-light); margin-bottom: 30px; line-height: 1.7; }
 .hero-btns { display: flex; gap: 15px; }
